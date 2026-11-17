@@ -1,3 +1,8 @@
+> [!NOTE]
+> This is an unofficial fork of [AutoModpack Velocity](https://github.com/Skidamek/AutoModpackVelocity) that also supports AutoModpack 5.
+> Its builds are only on this repository's GitHub Releases page; the official plugin is on [Modrinth](https://modrinth.com/plugin/automodpackvelocity).
+> With AutoModpack 5, set `connectionMode` to `MAGIC` in the backend's AutoModpack server config, and leave `advertisedEndpointHost` and `advertisedEndpointPort` at their defaults.
+
 **AutoModpack Velocity** is a Velocity companion plugin for [AutoModpack](https://modrinth.com/project/automodpack/), enabling you to use it on your Velocity proxy network.
 
 <p align="center">

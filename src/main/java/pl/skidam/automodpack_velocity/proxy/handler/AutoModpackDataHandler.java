@@ -12,6 +12,7 @@ import java.net.InetSocketAddress;
 
 import static pl.skidam.automodpack_velocity.Constants.logger;
 import static pl.skidam.automodpack_velocity.Constants.*;
+import static pl.skidam.automodpack_velocity.utils.VelocityHelper.isV5DataPacket;
 import static pl.skidam.automodpack_velocity.utils.VelocityHelper.rewriteDataPacket;
 
 public class AutoModpackDataHandler extends ChannelDuplexHandler {
@@ -62,11 +63,12 @@ public class AutoModpackDataHandler extends ChannelDuplexHandler {
 
     private void cacheBackendPort(ChannelHandlerContext ctx, JsonObject obj) {
         try {
-            if (!obj.has("port")) {
+            String portField = isV5DataPacket(obj) ? "endpointPort" : "port";
+            if (!obj.has(portField)) {
                 return;
             }
 
-            int amPort = obj.get("port").getAsInt();
+            int amPort = obj.get(portField).getAsInt();
 
             // The channel's remote address is the backend Minecraft server
             InetSocketAddress backendAddress = (InetSocketAddress) ctx.channel().remoteAddress();
